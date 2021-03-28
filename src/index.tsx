@@ -25,16 +25,147 @@ interface VerticalNavBarProps {
    * Id of the textfield.
    */
   // id?: string;
+
+  /**
+   * Array that has all the information about the section items: link, icon and itemTitle.
+   */
+  sectionsItems?: Array<{ link: string; icon: string; itemTitle: string }>;
   /**
    * Id of the textfield.
    */
   barExtended?: boolean;
+  /**
+   * Id of the textfield.
+   */
+  selectedNavTabBackground?: string;
+  /**
+   * Id of the textfield.
+   */
+  selectedNavTabBorderColor?: string;
+  /**
+   * onClick to close the menu.
+   */
+  onClickToogleIcon?: React.MouseEventHandler<HTMLButtonElement>;
 }
+
+const itemDashboard = {
+  link: "/",
+  icon: (
+    <IconButton
+      color="primary"
+      size="small"
+      aria-label="f3m"
+      className="align-text-top"
+      /* onClick={this.onClickDashboard} */
+    >
+      <DashboardIcon fontSize="large"></DashboardIcon>
+    </IconButton>
+  ),
+  itemTitle: (
+    <Box
+      fontSize={14}
+      fontWeight={700}
+      fontFamily="Nunito"
+      style={{
+        paddingLeft: 10,
+        marginTop: "auto",
+        marginBottom: "auto",
+        textTransform: "uppercase",
+        color: "#3f51b5",
+        width: 170,
+        textAlign: "left",
+        height: 40,
+        lineHeight: 3,
+      }}
+      /* onClick={this.onClickDashboard} */
+    >
+      Dashboard
+    </Box>
+  ),
+};
+
+const itemSettings = {
+  link: "/settings",
+  icon: (
+    <IconButton
+      color="primary"
+      size="small"
+      aria-label="f3m"
+      /* onClick={this.onClickSettingsHome} */
+    >
+      <SettingsIcon fontSize="large" />
+    </IconButton>
+  ),
+  itemTitle: (
+    <Box
+      fontSize={14}
+      fontWeight={700}
+      fontFamily="Nunito"
+      style={{
+        paddingLeft: 10,
+        marginTop: "auto",
+        marginBottom: "auto",
+        textTransform: "uppercase",
+        color: "#3f51b5",
+        width: 170,
+        textAlign: "left",
+        height: 40,
+        lineHeight: 3,
+      }}
+      /* onClick={this.onClickSettingsHome} */
+    >
+      {/* {t("navBar.Admin")} */}
+      Settings
+    </Box>
+  ),
+};
+
+const itemWounds = {
+  link: "/wounds",
+  icon: (
+    <IconButton
+      color="primary"
+      size="small"
+      aria-label="f3m"
+      /* onClick={this.onClickWounds} */
+    >
+      <HealingIcon fontSize="large"></HealingIcon>
+    </IconButton>
+  ),
+  itemTitle: (
+    <Box
+      fontSize={14}
+      fontWeight={700}
+      fontFamily="Nunito"
+      style={{
+        paddingLeft: 10,
+        marginTop: "auto",
+        marginBottom: "auto",
+        textTransform: "uppercase",
+        color: "#3f51b5",
+        width: 170,
+        textAlign: "left",
+        height: 40,
+        lineHeight: 3,
+      }}
+      // onClick={this.onClickWounds}
+    >
+      {/* {t("navBar.wounds")} */}
+      WOUNDS
+    </Box>
+  ),
+};
+
+let tabs = [itemDashboard, itemSettings, itemWounds];
 
 const VerticalNavBar: FunctionComponent<VerticalNavBarProps> = ({
   // classes,
   // id,
-  barExtended = true,
+  sectionsItems = tabs,
+  barExtended = false,
+  selectedNavTabBackground = "#3f51b534",
+  selectedNavTabBorderColor = "#3f51b5",
+  onClickToogleIcon,
 }) => {
   const useStyles = makeStyles((theme) => ({
     root: {
@@ -293,13 +424,13 @@ const VerticalNavBar: FunctionComponent<VerticalNavBarProps> = ({
       color: "#3f51b5",
     },
     selectedNavTab: {
-      background: "#3f51b534",
+      background: selectedNavTabBackground,
       borderLeft: 3,
       borderTop: 0,
       borderBottom: 0,
       borderRight: 0,
       borderStyle: "solid",
-      borderColor: "#3f51b5",
+      borderColor: selectedNavTabBorderColor,
     },
     extendedMenu: {
       "&.navbar": {
@@ -329,95 +460,6 @@ const VerticalNavBar: FunctionComponent<VerticalNavBarProps> = ({
   }));
 
   const styleClass = useStyles();
-
-  const itemDashboard = {
-    link: "/",
-    icon: (
-      <IconButton
-        color="primary"
-        size="small"
-        aria-label="f3m"
-        className="align-text-top"
-        /* onClick={this.onClickDashboard} */
-      >
-        <DashboardIcon fontSize="large"></DashboardIcon>
-      </IconButton>
-    ),
-    itemTitle: (
-      <Box
-        fontSize={14}
-        fontWeight={700}
-        fontFamily="Nunito"
-        className={`${styleClass.pl3}
-         ${styleClass.myAuto}
-         ${styleClass.textUppercase}
-         ${styleClass.buttonLink}`}
-        /* onClick={this.onClickDashboard} */
-      >
-        Dashboard
-      </Box>
-    ),
-  };
-
-  const itemSettings = {
-    link: "/settings",
-    icon: (
-      <IconButton
-        color="primary"
-        size="small"
-        aria-label="f3m"
-        /* onClick={this.onClickSettingsHome} */
-      >
-        <SettingsIcon fontSize="large" />
-      </IconButton>
-    ),
-    itemTitle: (
-      <Box
-        fontSize={14}
-        fontWeight={700}
-        fontFamily="Nunito"
-        className={`${styleClass.pl3}
-         ${styleClass.myAuto}
-         ${styleClass.textUppercase}
-         ${styleClass.buttonLink}`}
-        /* onClick={this.onClickSettingsHome} */
-      >
-        {/* {t("navBar.Admin")} */}
-        Settings
-      </Box>
-    ),
-  };
-
-  const itemWounds = {
-    link: "/wounds",
-    icon: (
-      <IconButton
-        color="primary"
-        size="small"
-        aria-label="f3m"
-        /* onClick={this.onClickWounds} */
-      >
-        <HealingIcon fontSize="large"></HealingIcon>
-      </IconButton>
-    ),
-    itemTitle: (
-      <Box
-        fontSize={14}
-        fontWeight={700}
-        fontFamily="Nunito"
-        className={`${styleClass.pl3}
-        ${styleClass.myAuto}
-        ${styleClass.textUppercase}
-        ${styleClass.buttonLink}`}
-        // onClick={this.onClickWounds}
-      >
-        {/* {t("navBar.wounds")} */}
-        WOUNDS
-      </Box>
-    ),
-  };
-
-  let tabs = [itemDashboard, itemSettings, itemWounds];
 
   const [
     isBarExtended,
@@ -451,7 +493,7 @@ const VerticalNavBar: FunctionComponent<VerticalNavBarProps> = ({
               }`}
               size="small"
               aria-label="f3m"
-              /* onClick={extendBar} */
+              onClick={onClickToogleIcon}
             >
               {isBarExtended ? (
                 <ClearIcon
@@ -469,7 +511,7 @@ const VerticalNavBar: FunctionComponent<VerticalNavBarProps> = ({
             <Nav
               className={`${styleClass.myAuto} ${styleClass.navContainer} ${styleClass.WidthOneHundred}`}
             >
-              {tabs.map((item) => (
+              {sectionsItems.map((item: any) => (
                 <NavLink
                   key={item.link}
                   className={`${styleClass.navLinkSize} ${styleClass.dFlex} ${styleClass.WidthOneHundred}`}
