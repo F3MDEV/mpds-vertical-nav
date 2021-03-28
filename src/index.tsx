@@ -18,32 +18,23 @@ import HealingIcon from "@material-ui/icons/Healing";
 
 interface VerticalNavBarProps {
   /**
-   * Classes in the root of the textfield.
-   */
-  // classes?: string;
-  /**
-   * Id of the textfield.
-   */
-  // id?: string;
-
-  /**
    * Array that has all the information about the section items: link, icon and itemTitle.
    */
   sectionsItems?: Array<{ link: string; icon: string; itemTitle: string }>;
   /**
-   * Id of the textfield.
+   * Boolean value of the bar extension state.
    */
   barExtended?: boolean;
   /**
-   * Id of the textfield.
+   * Background color of the selected nav.
    */
   selectedNavTabBackground?: string;
   /**
-   * Id of the textfield.
+   * Border color of the selected nav.
    */
   selectedNavTabBorderColor?: string;
   /**
-   * onClick to close the menu.
+   * onClick to toogle the menu.
    */
   onClickToogleIcon?: React.MouseEventHandler<HTMLButtonElement>;
 }
