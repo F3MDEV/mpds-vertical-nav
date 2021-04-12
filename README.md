@@ -74,8 +74,7 @@ ReactDOM.render(<App />, document.querySelector("#app"));
         </div>
       </td>
       <td>
-        <span>
-          [
+        <span>[
             {
               link: "/",
               icon: (
@@ -167,11 +166,9 @@ ReactDOM.render(<App />, document.querySelector("#app"));
                 </Box>
               ),
             };
-          ]
-        </span>
+          ]</span>
       </td>
     </tr>
-
     <tr>
       <td>
         <span>barExtended</span>
@@ -190,8 +187,6 @@ ReactDOM.render(<App />, document.querySelector("#app"));
         <span>false</span>
       </td>
     </tr>
-
-
     <tr>
       <td>
         <span>selectedNavTabBackground</span>
@@ -210,7 +205,6 @@ ReactDOM.render(<App />, document.querySelector("#app"));
         <span>"#3f51b534"</span>
       </td>
     </tr>
-
     <tr>
       <td>
         <span>selectedNavTabBorderColor</span>
@@ -229,7 +223,6 @@ ReactDOM.render(<App />, document.querySelector("#app"));
         <span>"#3f51b5"</span>
       </td>
     </tr>
-
     <tr>
       <td>
         <span>onClickToogleIcon</span>
@@ -248,7 +241,6 @@ ReactDOM.render(<App />, document.querySelector("#app"));
         <span>"#3f51b5"</span>
       </td>
     </tr>
-
   </tbody>
 </table>
 <br>
